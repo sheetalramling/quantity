@@ -1,31 +1,27 @@
 package com.tw.pathashala;
 
-
-
 public class Length {
 
-    public static final int METER_TO_CENTIMETER = 100;
-    public static final int KILOMETER_TO_CENTIMETER = 100000;
+
     private final double magnitude;
+    private static Metric metric;
 
-
-    public Length(double magnitude) {
+    public Length(double magnitude, Metric metric) {
         this.magnitude = magnitude;
-
+        this.metric=metric;
     }
 
-    public static Length in_meter(double magnitude) {
-        return new Length(magnitude * METER_TO_CENTIMETER);
+    public static Length in_centimeter(int magnitude) {
+        return new Length(magnitude,Metric.CENTIMETER);
     }
 
-    public static Length in_centimeter(double magnitude) {
-        return new Length(magnitude);
+    public static Length in_meter(int magnitude) {
+        return new Length(magnitude*100 ,Metric.METER);
     }
 
     public static Length in_kilometer(double magnitude) {
-        return new Length(magnitude* KILOMETER_TO_CENTIMETER);
+        return new Length(magnitude*100000 ,Metric.KILOMETER);
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -35,7 +31,10 @@ public class Length {
         if (obj.getClass() != getClass()) {
             return false;
         }
+
         Length that = (Length) obj;
+        //System.out.println(that.metric);
+        //System.out.println(that.metric);
         return magnitude == that.magnitude;
     }
 }
