@@ -3,12 +3,21 @@ package com.tw.pathashala;
 public class Quantity {
 
     private final double magnitude;
-    private final String metric;
 
-    public Quantity(double magnitude, String metric) {
+
+    public Quantity(double magnitude) {
         this.magnitude = magnitude;
-        this.metric = metric;
+
     }
+
+    static Quantity create_meter(double magnitude) {
+        return new Quantity(magnitude * 100);
+    }
+
+    static Quantity create_centimeter(double magnitude) {
+        return new Quantity(magnitude);
+    }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -19,14 +28,6 @@ public class Quantity {
             return false;
         }
         Quantity that = (Quantity) obj;
-        if (metric != that.metric) {
-
-            if (metric.equals("m") && that.metric.equals("cm")) {
-                return 100 * magnitude == that.magnitude;
-            }
-
-
-        }
         return magnitude == that.magnitude;
     }
 }
