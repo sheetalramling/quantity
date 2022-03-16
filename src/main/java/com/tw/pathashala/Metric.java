@@ -1,20 +1,16 @@
 package com.tw.pathashala;
 
-enum Metric{
-    CENTIMETER(1),
-    METER(100),
-    KILOMETER(100000);
-    private final int baseUnit ;
+enum Metric {
+    CENTIMETER(1), METER(100), KILOMETER(100000);
 
+    private final int unit;
 
-    Metric(int baseUnit){
-       this.baseUnit =baseUnit;
+    Metric(int unit) {
+        this.unit = unit;
     }
 
-
-    /*@Override
-    public String toString() {
-        return String.valueOf(baseUnit);
-    }*/
+    public int getUnit() {
+        return unit;
+    }
 }
 
