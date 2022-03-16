@@ -7,21 +7,21 @@ public class Length {
     private final double magnitude;
     Metric metric;
 
-    private Length(double magnitude,Metric metric) {
+    private Length(double magnitude, Metric metric) {
         this.magnitude = magnitude;
-        this.metric=metric;
+        this.metric = metric;
     }
 
-    public static Length in_centimeter(int magnitude) {
-        return new Length(magnitude ,CENTIMETER);
+    public static Length inCentimeter(double magnitude) {
+        return new Length(magnitude, CENTIMETER);
     }
 
-    public static Length in_meter(int magnitude) {
-        return new Length(magnitude,METER);
+    public static Length inMeter(double magnitude) {
+        return new Length(magnitude, METER);
     }
 
-    public static Length in_kilometer(double magnitude) {
-        return new Length(magnitude,KILOMETER);
+    public static Length inKilometer(double magnitude) {
+        return new Length(magnitude, KILOMETER);
     }
 
     @Override
@@ -37,4 +37,18 @@ public class Length {
         double unit_2=that.metric.getUnit()*that.magnitude;
         return unit_1==unit_2;
     }
+
+    public Length add(Length length) {
+        double convertedBaseUnitValue=metric.convertToBaseUnit(length.magnitude,length);
+        return new Length(magnitude + metric.converter(convertedBaseUnitValue,metric),metric);
+
+
+    }
+
+    public Length subtract(Length length) {
+        double convertedBaseUnitValue=metric.convertToBaseUnit(length.magnitude, length);
+        return new Length(magnitude  - metric.converter(convertedBaseUnitValue,metric),metric);
+
+    }
 }
+
