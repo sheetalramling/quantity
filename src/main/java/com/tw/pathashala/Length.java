@@ -5,7 +5,7 @@ import static com.tw.pathashala.Metric.*;
 public class Length {
 
     private final double magnitude;
-    Metric metric;
+    private final Metric metric;
 
     private Length(double magnitude, Metric metric) {
         this.magnitude = magnitude;
@@ -33,20 +33,20 @@ public class Length {
             return false;
         }
         Length that = (Length) obj;
-        double unit_1=this.metric.getUnit()*this.magnitude;
-        double unit_2=that.metric.getUnit()*that.magnitude;
-        return unit_1==unit_2;
+        double magnitude1= metric.convertToBaseUnit(this.magnitude,this.metric);
+        double magnitude2= metric.convertToBaseUnit(that.magnitude,that.metric);
+        return magnitude1==magnitude2;
     }
 
-    public Length add(Length length) {
-        double convertedBaseUnitValue=metric.convertToBaseUnit(length.magnitude,length);
+    public Length plus(Length length) {
+        double convertedBaseUnitValue=metric.convertToBaseUnit(length.magnitude,length.metric);
         return new Length(magnitude + metric.converter(convertedBaseUnitValue,metric),metric);
 
 
     }
 
-    public Length subtract(Length length) {
-        double convertedBaseUnitValue=metric.convertToBaseUnit(length.magnitude, length);
+    public Length minus(Length length) {
+        double convertedBaseUnitValue=metric.convertToBaseUnit(length.magnitude,length.metric);
         return new Length(magnitude  - metric.converter(convertedBaseUnitValue,metric),metric);
 
     }

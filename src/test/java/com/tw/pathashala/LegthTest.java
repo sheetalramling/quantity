@@ -47,9 +47,9 @@ class LengthTest {
         Length hundredCentimeter = inCentimeter(100);
         Length twoMeter = inMeter(2);
 
-        Length result = oneMeter.add(hundredCentimeter);
+        Length oneMeterPlusHundredCentimeter = oneMeter.plus(hundredCentimeter);
 
-        assertThat(twoMeter, is(equalTo(result)));
+        assertThat(oneMeterPlusHundredCentimeter, is(equalTo(twoMeter)));
     }
 
     @Test
@@ -58,9 +58,9 @@ class LengthTest {
         Length oneKilometer = inKilometer(1);
         Length oneHundredThousandTwoHundred = inCentimeter(100200);
 
-        Length result = twoHundredCentimeter.add(oneKilometer);
+        Length twoHundreCentimeterdPlusOneKilometer = twoHundredCentimeter.plus(oneKilometer);
 
-        assertThat(oneHundredThousandTwoHundred, is(equalTo(result)));
+        assertThat(twoHundreCentimeterdPlusOneKilometer, is(equalTo(oneHundredThousandTwoHundred)));
     }
 
 
@@ -70,9 +70,9 @@ class LengthTest {
         Length fiftyCentimeter = inCentimeter(50);
         Length pointFiveMeter = inMeter(0.5);
 
-        Length result = oneMeter.subtract(fiftyCentimeter);
+        Length oneMeterMinusFiftyCentimeter = oneMeter.minus(fiftyCentimeter);
 
-        assertThat(pointFiveMeter, is(equalTo(result)));
+        assertThat(oneMeterMinusFiftyCentimeter, is(equalTo(pointFiveMeter)));
     }
 
 
@@ -83,9 +83,9 @@ class LengthTest {
         Length oneMeter = inMeter(1);
         Length nineteenThousandCentimeter = inCentimeter(1900);
 
-        Length result = twoThousandCentimeter.subtract(oneMeter);
+        Length oneMeterMinusNineteenThousandCentimeter = twoThousandCentimeter.minus(oneMeter);
 
-        assertThat(nineteenThousandCentimeter, is(equalTo(result)));
+        assertThat(oneMeterMinusNineteenThousandCentimeter, is(equalTo(nineteenThousandCentimeter)));
     }
 
 }

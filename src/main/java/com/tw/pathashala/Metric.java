@@ -10,16 +10,13 @@ enum Metric {
         this.unit = unit;
     }
 
-    public int getUnit() {
-        return unit;
-    }
 
-    public double convertToBaseUnit(double magnitude,Length length) {
-        return magnitude*length.metric.getUnit();
+    public double convertToBaseUnit(double magnitude, Metric metric) {
+        return magnitude*metric.unit;
     }
 
     public double converter(double magnitude, Metric metric) {
-        return magnitude/metric.getUnit();
+        return magnitude/metric.unit;
     }
 }
 
